@@ -6,16 +6,16 @@ import './App.css'
 import Tag from './component/Tag'
 
 
-  interface TagType {
-    title: string
-    id: number
-  }
+export interface TagType {
+  title: string
+  id: number
+}
 
-  interface ChangeEvent {
-    target: {
-      value: string
-    }
+export interface ChangeEvent {
+  target: {
+    value: string
   }
+}
 
 function App() {
 
@@ -26,11 +26,10 @@ function App() {
   let idvalue: number = 0
 
   function handleChange(e: ChangeEvent): void {
-    if(e.target.value === ' ')
-    {
+    if (e.target.value === ' ') {
       const tag: TagType = {
         title: 'Taged',
-        id: Math.random() * 100000
+        id: idvalue++
       }
       setTags((prev: TagType[]): TagType[] => [...prev, tag])
 
@@ -40,13 +39,13 @@ function App() {
 
   return (
     <div>
-      <input 
+      <input
         type="text"
         onChange={(e) => handleChange(e)}
       />
       {
         tags.map((tag) => {
-          return <Tag tag = {tag}/>
+          return <Tag key={tag.id} tag={tag} />
         })
       }
 

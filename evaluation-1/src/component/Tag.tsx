@@ -1,13 +1,18 @@
 import React from 'react'
 
-function Tag({tag}) {
+interface TagType {
+    title: string
+    id: number
+  }
+
+function Tag({tag: TagType}) {
 
     function handleClick(){
-        
+
     }
   return (
     <div>
-        <h1>tag.title</h1>
+        <h1>{tag.title}</h1>
         <button onClick={handleClick}></button>
     </div>
   )
